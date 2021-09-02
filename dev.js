@@ -58,6 +58,7 @@ function getTimeFormat(){
         case "12h":
             setupTime("twelve");
         break;
+
         default: unknownTimeFormat();
     }
 }
@@ -109,15 +110,27 @@ function search(url){
 }
 
 function setupTime(format){
+    var veltime = new Date();
+    var hour = veltime.getHours();
+    var minute = veltime.getMinutes();
+    if (minute < 10){
+        minute = 0 + String(minute);
+    }
     if (format == "twentyfour"){
         timeFunction.innerHTML = `
-            <p>ahs</p>
+            <p>${hour}:${minute}</p>
         `;
     } else if (format == "twelve"){
+        if (hour < 12){
+            hour = hour - 12;
+        }
         timeFunction.innerHTML = `
-            <p>ahsss</p>
+            <p>${hour}:${minute}</p>
         `;
     }
+    setTimeout(function(){
+        setupTime(format) 
+    }, 100);
 }
 
 function setupSearch(url){
