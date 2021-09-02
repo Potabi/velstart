@@ -2,10 +2,31 @@
 JavaScript API for start page creation.
 
 ## Documentation
-Velstart is increadibly easy to set up
+Velstart is incredibly easy to set up
 
 ### VELTIME
-Veltime does not currently exist. It is still a work in progress.
+Adding time functionality is quick and simple with Velstart.
+1. Add the script to the bottom of your page. You have two options, the normal and minified versions.
+  - Minified (**RECOMMENDED**): 
+      ```html 
+      <script src="https://cdn.jsdelivr.net/gh/PotabiFoundation/velstart@main/velstart.min.js" defer></script>
+      ```
+  - Normal:
+      ```html 
+      <script src="https://cdn.jsdelivr.net/gh/PotabiFoundation/velstart@main/velstart.js" defer></script>
+      ```
+     > Adding this to the bottom of the page, not the head, is very important, as it might not function otherwise.
+2. Add the search box
+   > NOTE: This may not follow your CSS perfectly, we are working on a solution with vel classes.
+   
+   - Add this line of HTML, and customize:
+       ```html
+       <div id="vel-time" vel-time-format="24h"></div>
+       ```
+       - Setting ID to "vel-time" makes it properly add the form information.
+       - There are two functional time formats
+          - Twelve hour (Set with `12h`)
+          - Twenty-four hour (Set with `24h`)
 
 ### VELSEARCH
 Adding search functionality to your website is simple with Velstart. 
@@ -24,7 +45,7 @@ Adding search functionality to your website is simple with Velstart.
    
    - Add this line of HTML, and customize:
        ```html
-       <div id="vel-search" vel-search-default="ecosia"></div
+       <div id="vel-search" vel-search-default="ecosia"></div>
        ```
        - Setting ID to "vel-search" makes it properly add the form information.
        - The `vel-search-default` attribute selects which search engine your start page uses. Search engine options are listed below. They are not case sensitive, but their proper development name will be in the parenthesis. Unless listed in the parenthesis, most search engines only have one name to add them by.
@@ -36,6 +57,7 @@ Adding search functionality to your website is simple with Velstart.
           - Yahoo (`yahoo`)
           - Yandex (`yandex`)
 
+### Example
 Here is how a simple site using Velstart should look:
 ```html
 <!DOCTYPE html>
@@ -47,6 +69,7 @@ Here is how a simple site using Velstart should look:
         <title>My Start Page</title>
     </head>
     <body>
+        <div id="vel-time" vel-time-format="24h"></div>
         <div id="vel-search" vel-search-default="ecosia" vel-dropdown-class="..." vel-form-class="..." vel-button-class="..."></div>
         <footer>
             <!-- Please read the extra license clause, and add this -->
