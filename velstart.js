@@ -44,40 +44,59 @@
 
 // Get search bar identification 
 var searchBar = document.getElementById("vel-search");
+var timeFunction = document.getElementById("vel-time");
 
-// Get
-var searchDefault = searchBar.getAttribute("vel-search-default");
-switch (searchDefault.toLowerCase()) {
-    case "ask":
-        setupSearch("https://www.ask.com/web?q=");
-    break;
-    
-    case "bing":
-        setupSearch("https://www.bing.com/search?q=");
-    break;
+// Get time format
+function getTimeFormat(){
+    var timeDefault = timeFunction.getAttribute("vel-time-format");
+    switch (timeDefault.toLowerCase()){
+        case "24h":
+            setupTime("twentyfour");
+        break;
 
-    case "duckduckgo":
-        setupSearch("https://duckduckgo.com/?q=");
-    break;
+        case "12h":
+            setupTime("twelve");
+        break;
 
-    case "ecosia":
-        setupSearch("https://www.ecosia.org/search?q=");
-    break;
+        default: unknownTimeFormat();
+    }
+}
 
-    case "google":
-        setupSearch("https://www.google.com/search?q=");
-    break;
+// Get search engine
+function getSearchEngine(){
+    var searchDefault = searchBar.getAttribute("vel-search-default");
+    switch (searchDefault.toLowerCase()) {
+        case "ask":
+            setupSearch("https://www.ask.com/web?q=");
+        break;
+        
+        case "bing":
+            setupSearch("https://www.bing.com/search?q=");
+        break;
 
-    case "yahoo":
-        setupSearch("https://search.yahoo.com/search?p=");
-    break;
+        case "duckduckgo":
+            setupSearch("https://duckduckgo.com/?q=");
+        break;
 
-    case "yandex":
-        setupSearch("https://yandex.com/search/?text=");
-    break;
-    
-    default: unknownSearch();
- }
+        case "ecosia":
+            setupSearch("https://www.ecosia.org/search?q=");
+        break;
+
+        case "google":
+            setupSearch("https://www.google.com/search?q=");
+        break;
+
+        case "yahoo":
+            setupSearch("https://search.yahoo.com/search?p=");
+        break;
+
+        case "yandex":
+            setupSearch("https://yandex.com/search/?text=");
+        break;
+        
+        default: unknownSearch();
+    }
+}
 
 function search(url){
     var toSearch = document.getElementById("vel-search-1").value;
@@ -87,6 +106,30 @@ function search(url){
     var finalSearch = String( url + toSearch.replace(" ", "+"));
     location = String( finalSearch );
     return false;
+}
+
+function setupTime(format){
+    var veltime = new Date();
+    var hour = veltime.getHours();
+    var minute = veltime.getMinutes();
+    if (minute < 10){
+        minute = 0 + String(minute);
+    }
+    if (format == "twentyfour"){
+        timeFunction.innerHTML = `
+            <p>${hour}:${minute}</p>
+        `;
+    } else if (format == "twelve"){
+        if (hour < 12){
+            hour = hour - 12;
+        }
+        timeFunction.innerHTML = `
+            <p>${hour}:${minute}</p>
+        `;
+    }
+    setTimeout(function(){
+        setupTime(format) 
+    }, 100);
 }
 
 function setupSearch(url){
@@ -102,4 +145,18 @@ function unknownSearch(){
     searchBar.innerHTML = `
     <p>Velstart error: Unknown search engine, please check implementation!</p>
     `;
+}
+
+function unknownTimeFormat(){
+    timeFunction.innerHTML = `
+        <p>Velstart error: Unknown time format</p>
+    `;
+}
+
+if (searchBar){
+    getSearchEngine();
+}
+
+if (timeFunction){
+    getTimeFormat();
 }
