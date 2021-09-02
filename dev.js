@@ -133,3 +133,11 @@ function unknownSearch(){
     <p>Velstart error: Unknown search engine, please check implementation!</p>
     `;
 }
+
+if (searchBar){
+    getSearchEngine();
+}
+
+if (timeFunction){
+    getTimeFormat();
+}
