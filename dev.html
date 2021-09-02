@@ -5,9 +5,43 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Document</title>
+        <style>
+            .a{
+                font-weight: bolder;
+            }
+
+            .b{
+                color: red;
+            }
+
+            .c{
+                color: black;
+            }
+
+            .submit{
+                border: none;
+                border-radius: 2rem;
+                padding-left: 2rem;
+                padding-right: 2rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                background-color: green;
+                color: white;
+                font-weight: bolder;
+            }
+
+            .form{
+                border-radius: 2rem;
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+                padding-left: .5rem;
+                padding-right: .5rem;
+            }
+        </style>
     </head>
     <body>
-        <div id="vel-time" vel-time-format="12h"></div>
+        <div id="vel-time" vel-time-format="12h" vel-time-class="a b"></div>
+        <div id="vel-search" vel-search-default="ecosia" vel-form-class="form" vel-button-class="submit"></div>
 
         <script src="dev.js" defer></script>
     </body>

@@ -70,7 +70,7 @@ Here is how a simple site using Velstart should look:
     </head>
     <body>
         <div id="vel-time" vel-time-format="24h"></div>
-        <div id="vel-search" vel-search-default="ecosia" vel-dropdown-class="..." vel-form-class="..." vel-button-class="..."></div>
+        <div id="vel-search" vel-search-default="ecosia" vel-form-class="..." vel-button-class="..."></div>
         <footer>
             <!-- Please read the extra license clause, and add this -->
             <p>Start page functionality from Velstart by The Potabi Foundation</p>

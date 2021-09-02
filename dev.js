@@ -110,6 +110,8 @@ function search(url){
 }
 
 function setupTime(format){
+    var timeClass = timeFunction.getAttribute("vel-time-class");
+    var time12hclass = timeFunction.getAttribute("vel-12h-label-class");
     var veltime = new Date();
     var hour = veltime.getHours();
     var minute = veltime.getMinutes();
@@ -121,25 +123,27 @@ function setupTime(format){
             <p>${hour}:${minute}</p>
         `;
     } else if (format == "twelve"){
-        var ampm = "AM"
+        var ampm = "AM";
         if (hour > 12){
-            ampm = "PM"
+            ampm = "PM";
             hour = hour - 12;
         }
         timeFunction.innerHTML = `
-            <p>${hour}:${minute} ${ampm}</p>
+            <p class="${timeClass}">${hour}:${minute} <span class="${time12hclass}">${ampm}</span></p>
         `;
     }
     setTimeout(function(){
-        setupTime(format) 
+        setupTime(format);
     }, 100);
 }
 
 function setupSearch(url){
+    var formClass= searchBar.getAttribute("vel-form-class");
+    var buttonClass= searchBar.getAttribute("vel-button-class");
     searchBar.innerHTML = `
         <form onsubmit="return search(\'`+ String(url) + `\');">
-            <input id="vel-search-1" type="text" name="vel-search" placeholder="Search for...">
-            <input type="submit" value="Search" name="button">
+            <input class="${formClass}" id="vel-search-1" type="text" name="vel-search" placeholder="Search for...">
+            <input class="${buttonClass}" type="submit" value="Search" name="button">
         </form>
     `;
 }
