@@ -119,7 +119,7 @@ function setupTime(format){
     }
     if (format == "twentyfour"){
         timeFunction.innerHTML = `
-            <p>${hour}:${minute}</p>
+            <p class="${timeClass}">${hour}:${minute}</p>
         `;
     } else if (format == "twelve"){
         var ampm = "AM";
