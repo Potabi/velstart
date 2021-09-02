@@ -117,15 +117,17 @@ function setupTime(format){
         minute = 0 + String(minute);
     }
     if (format == "twentyfour"){
-        continue;
+        timeFunction.innerHTML = `
+            <p>${hour}:${minute}</p>
+        `;
     } else if (format == "twelve"){
         if (hour < 12){
             hour = hour - 12;
         }
+        timeFunction.innerHTML = `
+            <p>${hour}:${minute}</p>
+        `;
     }
-    timeFunction.innerHTML = `
-        <p>${hour}:${minute}</p>
-    `;
     setTimeout(function(){
         setupTime(format) 
     }, 100);
