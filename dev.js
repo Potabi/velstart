@@ -58,7 +58,8 @@ function getTimeFormat(){
         case "12h":
             setupTime("twelve");
         break;
-}
+        default: unknownTimeFormat();
+    }
 }
 
 // Get search engine
@@ -131,6 +132,12 @@ function setupSearch(url){
 function unknownSearch(){
     searchBar.innerHTML = `
     <p>Velstart error: Unknown search engine, please check implementation!</p>
+    `;
+}
+
+function unknownTimeFormat(){
+    timeFunction.innerHTML = `
+        <p>Velstart error: Unknown time format</p>
     `;
 }
 
