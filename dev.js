@@ -121,11 +121,13 @@ function setupTime(format){
             <p>${hour}:${minute}</p>
         `;
     } else if (format == "twelve"){
-        if (hour < 12){
+        var ampm = "AM"
+        if (hour > 12){
+            ampm = "PM"
             hour = hour - 12;
         }
         timeFunction.innerHTML = `
-            <p>${hour}:${minute}</p>
+            <p>${hour}:${minute} ${ampm}</p>
         `;
     }
     setTimeout(function(){
