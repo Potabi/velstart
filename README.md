@@ -18,7 +18,7 @@ Here is how a simple site using Velstart should look:
     <body>
         <div id="vel-time" vel-time-format="24h"></div>
         <div id="vel-search" vel-search-default="ecosia" vel-form-class="..." vel-button-class="..."></div>
-        <script src="/path/to/velstart.jss" defer></script>
+        <script src="/path/to/velstart.js" defer></script>
     </body>
 </html>
 ```
